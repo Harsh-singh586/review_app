@@ -1,0 +1,109 @@
+{% load static %}
+<html>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+    var pathname = window.location.pathname;
+    </script>
+    <style>
+       #sh{
+           box-shadow: 20px 20px grey;
+
+
+       }
+        #a{
+            width:30vw;
+            height:5vw;
+            background-color:white;
+        }
+        #b{
+            width:30vw;
+            height:5vw;
+            left:45px;
+            position:relative;
+            background-color:white;
+        }
+    </style>
+</head>
+<body style='background-color:#33adff'>
+    <div class="container">
+            {% if profile %}
+               <center><div><img id = 'sh' src={{ profile }} height="300" width="280"></div></center>
+            {% else %}
+               <center><div><img id = 'sh' src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+            {% endif %}
+            <br><br>
+            <center><div style="color:white; font-size:3vw">{{ name }}</div></center>
+        </div><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      {% if image1 %}
+               <center><div><img id = 'sh'  src={{ image1 }} height="300" width="280"></div></center>
+      {% else %}
+               <center><div><img id = 'sh' src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+      {% endif %}
+    </div>
+    <div class="col-2"></div>
+    <div class="col-4">
+      {% if image2 %}
+               <center><div><img id = 'sh' src={{ image2 }} height="300" width="280"></div></center>
+      {% else %}
+               <center><div><img id = 'sh' src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      {% if image3 %}
+               <center><div><img id = 'sh'  src = {{ image3 }} height="300" width="280"></div></center>
+      {% else %}
+               <center><div><img id = 'sh' src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+      {% endif %}
+    </div>
+    <div class="col-2"></div>
+    <div class="col-4">
+      {% if image4 %}
+               <center><div><img id ='sh' src={{ image4 }} height="300" width="280"></div></center>
+      {% else %}
+               <center><div><img id = 'sh' src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="container">
+    <div class="jumbotron">
+        <center>
+        <form method = 'POST' action = 'ask/'>
+            {% csrf_token %}
+            <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3" name='ques'></textarea>
+            <button type='submit' class="btn btn-primary">ASK</button>
+            </form>
+        </center>
+                  <center><div style="color:green;font-size:3vw;font-weight:bold">COMMENTS</div></center>
+                  <br><br>
+        <center>
+            {% for i in ques_ans %}
+               <div class="border border-primary" id = 'a'>{{ i.ques }}</div>
+               <br>
+               {% if i.ans %}
+               <div class="border border-primary" id = 'b'><div class="container" style="color:green">Answer:</div><div class = "container">{{ i.ans }}</div></div>
+               <br><br>
+               {% endif %}
+            {% endfor %}
+        </center>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <head></head>
+    <body>
+
+        <div class="container">
+            <div class="jumbotron">
+                <center><h1 style="color:Green;">REGISTER</h1></center>
+
+                <form method="POST">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <label>First Name</label>
+                        <input type="text" name="first_name" placeholder="First Name" class="form-control" required>
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" placeholder="Last name" class="form-control" required>
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username" class="form-control" required>
+                        <label>Password</label>
+                        <input type="password" name="password1" placeholder="Password" class="form-control" required>
+                        <label>Confirm Password</label>
+                        <input type="password" name="password2" placeholder="Confirm Password" class="form-control" required>
+                        <center><button type='submit' class="btn btn-primary">REGISTER</button></center>
+                    </div>
+                </form>
+                <div style="color:red;">
+                    {% for i in messages %}
+                    <center><h3>{{ i }}</h3></center>
+                    {% endfor %}
+                </div>
+                <center><a href='http://harshsingh.pythonanywhere.com/login' style='font-size:2vw'>LOG IN</a></center>
+            </div>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,193 @@
+{% load static %}
+<html>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        #a{
+            width:30vw;
+            height:5vw;
+            background-color:white;
+        }
+        #b{
+            width:30vw;
+            height:5vw;
+            left:45px;
+            position:relative;
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            {% if profile %}
+               <center><div><img class="rounded" src={{ profile }} height="300" width="280"></div></center>
+                <form method = "POST" enctype="multipart/form-data" action="/user/profile/">
+                {% csrf_token %}
+                <label>Change profile</label>
+                <div class="custom-file">
+               <input required type="file" accept="image/*" class="custom-file-input" id="customFile" name="profile">
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div><br>
+               <button type='submit' class="btn btn-primary">Change</button>
+               </form>
+            {% else %}
+               <center><div><img src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/profile/">
+                  {% csrf_token %}
+               <label>Update Image</label>
+               <div class="custom-file">
+               <input required accept="image/*" type="file" class="custom-file-input" id="customFile" name="profile">
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div><br>
+               <button type='submit' class="btn btn-primary">Update</button>
+               </form>
+            {% endif %}
+        <center><div style="color:red;font-size:3vw;">{{ user.first_name }} {{ user.last_name }}</div></center>
+        <center><a href='logout/' style="font-size:2vw">Logout</a></center>
+        </div><br><br><br>
+
+        <center><div class="border border-primary" style="color:red;font-size:1.5vw;">{{ profile_id }}</div></center><br>
+        <center>Copy Profile Link and Share</center><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      {% if image1 %}
+               <center><div><img class="rounded" src={{ image1 }} height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image1/">
+                {% csrf_token %}
+               <label>Change Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image1'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Change</button>
+               </form>
+      {% else %}
+               <center><div><img class="rounded" src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image1/">
+               {% csrf_token %}
+               <label>Update Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name="image1">
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Update</button>
+               </form>
+      {% endif %}
+    </div>
+    <div class="col-2"></div>
+    <div class="col-4">
+      {% if image2 %}
+               <center><div><img class="rounded" src={{ image2 }} height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image2/">
+                {% csrf_token %}
+                <label>Change Image</label>
+                <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name="image2">
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Change</button>
+               </form>
+      {% else %}
+               <center><div><img class="rounded" src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image2/">
+               {% csrf_token %}
+               <label>Update Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image2'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Update</button>
+               </form>
+      {% endif %}
+  </div>
+</div>
+</div>
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      {% if image3 %}
+               <center><div><img class="rounded" src = {{ image3 }} height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image3/">
+                {% csrf_token %}
+                <label>Change Image</label>
+                <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image3'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Change</button>
+               </form>
+      {% else %}
+               <center><div><img class="rounded" src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image3/">
+               {% csrf_token %}
+               <label>Update Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image3'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Update</button>
+               </form>
+      {% endif %}
+    </div>
+    <div class="col-2"></div>
+    <div class="required col-4">
+      {% if image4 %}
+               <center><div><img class="rounded" src={{ image4 }} height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image4/">
+               {% csrf_token %}
+               <label>Change Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image4'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">Change</button>
+               </form>
+      {% else %}
+               <center><div><img class="rounded" src="https://f0.pngfuel.com/png/81/570/profile-logo-png-clip-art.png" height="300" width="280"></div></center>
+               <form method = "POST" enctype="multipart/form-data" action="/user/image4/">
+               {% csrf_token %}
+               <label>Change Image</label>
+               <div class="custom-file">
+               <input required type="file" class="custom-file-input" accept="image/*" id="customFile" name='image4'>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+               </div>
+               <button type='submit' class="btn btn-primary">update</button>
+               </form>
+      {% endif %}
+    </div>
+  </divrequired >
+</div>
+<div class="container">
+<div class="jumbotron">
+    <center>
+            {% for i in ques_ans %}
+               <div class="border border-primary container" id = 'a'>{{ i.ques }}</div>
+               <br>
+               {% if not i.ans %}
+                           <form method = 'POST'  action = ans/{{ i.ques_id }}/>
+                            {% csrf_token %}
+                            <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3" name='ans'></textarea>
+                            <button type='submit' class="btn btn-primary">Answer</button>
+                            </form>
+                            <br>
+                {% endif %}
+               {% if i.ans %}
+               <div class="border border-primary container" id = 'b'><div class="container" style="color:green">Answer:</div><div class="container"> {{ i.ans }}</div></div>
+               <a href = "user/delete/{{ i.ques_id }}" style="font-size:1vw">Delete</a>
+               <br><br>
+               {% endif %}
+            {% endfor %}
+            </center>
+    </div>
+</div>
+</body>
+</html>
